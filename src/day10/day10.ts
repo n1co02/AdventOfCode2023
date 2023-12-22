@@ -11,11 +11,6 @@ interface Direction {
   opposite: string
 }
 
-export const partOne = async (): Promise<number> => {
-  const input = await readFile('src/day10/data.txt', 'utf8')
-  return findFarthestPointInLoop(input)
-}
-
 const findFarthestPointInLoop = (input: string): number => {
   const lines = input.split('\n')
   const map: string[][] = lines.map((line) => line.trim().split(''))
@@ -68,11 +63,6 @@ const findFarthestPointInLoop = (input: string): number => {
   }
 
   return Math.max(...Object.values(encounteredPlaces))
-}
-
-export const partTwo = async (): Promise<number> => {
-  const input = await readFile('src/day10/data.txt', 'utf8')
-  return getEnclosedAreaOfLoop(input)
 }
 
 const getEnclosedAreaOfLoop = (input: string): number => {
@@ -149,4 +139,14 @@ const getEnclosedAreaOfLoop = (input: string): number => {
   // Count the 'I's in the modified map
   const enclosedCount = map.flat().filter((cell) => cell === 'I').length
   return enclosedCount
+}
+
+export const partOne = async (): Promise<number> => {
+  const input = await readFile('src/day10/data.txt', 'utf8')
+  return findFarthestPointInLoop(input)
+}
+
+export const partTwo = async (): Promise<number> => {
+  const input = await readFile('src/day10/data.txt', 'utf8')
+  return getEnclosedAreaOfLoop(input)
 }
